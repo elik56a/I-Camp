@@ -15,9 +15,9 @@ var commentsRoutes = require("./routes/comments") ;
 var campgroundRoutes = require("./routes/campgrounds");    
 var indexRoutes = require("./routes/index")    
 
+var url =process.env.DATABASEURL || "mongodb://localhost:27017/i_camp"
+mongoose.connect(url, { useNewUrlParser: true })
 
-mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true })
-// mongoose.connect("mongodb://eliko:elieli641@ds111065.mlab.com:11065/icamp", { useNewUrlParser: true })
 
 
 
