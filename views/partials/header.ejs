@@ -30,6 +30,9 @@
            <li class="nav-item active <%= typeof page !== 'undefined' && page === 'campgrounds' ? 'active' : '' %>">
             <a href="/campgrounds" class="nav-link">Camps</a>
           </li>
+           <li class="nav-item active <%= typeof page !== 'undefined' && page === 'campgrounds' ? 'active' : '' %>">
+            <a href="/campgrounds/new" class="nav-link">Add New Camp</a>
+          </li>
         </ul>
         <ul class="navbar-nav">
             <% if(!currentUser){ %>
