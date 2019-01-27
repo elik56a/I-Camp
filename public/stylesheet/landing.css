@@ -7,6 +7,7 @@ body{
   position: relative;
   text-align: center;
   padding-top: 45vh;
+  font-size: 3rem;
 }
 #landing-header h1{
     color:white;
@@ -34,7 +35,7 @@ body{
   background-repeat: no-repeat;
   opacity: 0;
   z-index: 0;
-  animation: imageAnimation 50s linear infinite; 
+  animation: imageAnimation 20s linear infinite; 
 }
 
 .slideshow li:nth-child(1) { 
@@ -42,19 +43,19 @@ body{
 }
 .slideshow li:nth-child(2) { 
   background-image: url(https://images.pexels.com/photos/461956/pexels-photo-461956.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
-  animation-delay: 10s; 
+  animation-delay: 5s; 
 } 
 .slideshow li:nth-child(3) { 
   background-image: url(https://images.pexels.com/photos/462044/pexels-photo-462044.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
-  animation-delay: 20s; 
+  animation-delay: 10s; 
 }
 .slideshow li:nth-child(4) { 
   background-image: url(https://images.pexels.com/photos/371530/pexels-photo-371530.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
-  animation-delay: 30s; 
+  animation-delay: 15s; 
 }
 .slideshow li:nth-child(5) { 
   background-image: url(https://images.pexels.com/photos/301395/pexels-photo-301395.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
-  animation-delay: 40s; 
+  animation-delay: 20s; 
 }
 
 @keyframes imageAnimation { 

@@ -1,24 +1,25 @@
 <%  include ../partials/header %>
 
-                <!-- Edit Campground, Showing the form-->
+ <!-- Edit Campground, Showing the form-->
    <div class="row justify-content-center">
         <div class="col-md-12 text-center">
             <h1 style="margin-top: 100px; padding-bottom:25px;">Edit <%=campground.name%> </h1>
         </div>
-     <div class="col-md-6 col-lg-3 col-xs-12">
+     <div class="col-md-6 col-lg-3 col-sm-5 col-10">
       
          <form action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST">
            <div class="form-group">
                       <input class="form-control" type="text" name="campground[name]" value="<%=campground.name%>">
                  </div>
                    <div class="form-group">
-                      <input class="form-control"  type="number" name="campground[price]" value="<%=campground.price%>" min="0.0" step="0.01">   
+                      <input class="form-control"  type="number" name="campground[price]" value="<%=campground.price%>" min="0.0" step="0.10">   
                  </div> 
                  <div class="form-group">
                       <input class="form-control"  type="text" name="campground[img]" value="<%=campground.img%>">  
                  </div> 
-                  <div class="form-group">
-                      <input class="form-control"  type="text" required  name="campground[description]" value="<%=campground.description%>">
+        
+                   <div class="form-group">
+                    <textarea  class="form-control "  type="text" name="campground[description]" rows="5" required><%= campground.description %></textarea>
                  </div> 
                  <div class="form-group">
                  <button class="btn btn-primary btn-block">Submit</button>

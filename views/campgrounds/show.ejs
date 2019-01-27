@@ -12,12 +12,13 @@
         
         <div class="col-md-7">
             <div class="card mb-3">
-             <img class="card-img-top " src="<%= campground.img %>" alt="<%= campground.name %>">
+             <img class="card-img-top " src="<%= campground.img %>">
              <div class="card-body">
-                 <p class="float-right">$<%=campground.price%>/night</p>
+                 <p class="float-right">  $<%=campground.price%>/night</p>
                  <h2 class="card-title"><%= campground.name %></h2> 
-                 <p><em>Created by <%= campground.author.username , moment(campground.createdAt).fromNow()%></em> </p>
-                 <p class="card-text"><%= campground.description %></p>
+                 <p><em>Created by <%= campground.author.username%> , <%= moment(campground.createdAt).fromNow()%>  </em> </p>
+                 <p id="description" class="card-text"><%= campground.description %></p>
+                 
                 
                 <% if(currentUser && campground.author.id.equals(currentUser._id)|| currentUser && currentUser.isAdmin){ %>
                   <a class="btn btn-warning btn-sm" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
@@ -28,26 +29,73 @@
         </div>
            
         
-    <!-- Comments-->
-       <div class="card">
-      <div class="card-body">
-        <div class="text-right">
-          <a class="btn btn-success" href="/campgrounds/<%= campground._id %>/comments/new">Add New Comment</a>
-        </div>
-        <hr>
+   
         
-         <div class="row">
+
+        <!--COMMENT SECTION START-->
+<div class="well">
+  <!--Setting up the add new comment button that is used for collapsing-->
+  <div class="text-right pr-2">
+    <a class="btn btn-success pull-right" role="button" data-toggle="collapse" href="#collapseComment" aria-expanded="false" aria-controls="collapseComment">
+     <i class="fas fa-plus"></i>  Add new comment</a>
+  </div>
+ 
+ 
+ 
+      <!--Comment section title-->
+  <h5 class="pl-2"><strong>  Comments <i class="fas fa-comments"></i></strong></h5>
+
+  <!--Collapse Add a comment form START-->
+  <div class="collapse" id="collapseComment">
+    <div class="well" style="border-left: 5px solid #00C851; padding-left:10px">
+        <% if(!currentUser) { %>
+      <!--If the user is not logged in, direct him to the login page-->
+      <h5>You need to login before you can comment. <a href="/login">Click here</a> to go to the login page.</h5>
+        <% } %>
+        <% if(currentUser) { %>
+      <!--If the user is logged in, show the new comment form-->
+      <h4>Write your comment  <i class="far fa-edit"></i></h4>
+      <form id="add-comment-form" action="/campgrounds/<%= campground._id %>/comments" method="POST">
+        <div class="form-group">
+          <input class="form-control" type="text" disabled value="<%= currentUser.username %>">
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" name="comment[text]" placeholder="Write your comment..." form="add-comment-form" rows="5" cols="70"></textarea>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-success btn-sm">Comment <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></button>
+        </div>
+      </form>
+        <% } %>
+    </div>
+  </div>
+  <!--Collapse Add a comment form END-->
+
+      <hr>
+
+  <!--Check if there are comments, if there are none say no comments.-->
+    <% if (campground.comments.length === 0) { %>
+  <em style="color: grey;">No comments yet.</em>
+    <% } %>
+    
+
+     <!-- Comments show-->
+     <div class="card">
+      <div class="card-body">
+     <div class="row">
         <% campground.comments.forEach(function(comment){ %>
           <div class="col-md-12 mb-2">
             <div class="card">
               <div class="card-body">
                 <div class="float-left">
-                 <strong> <p class="card-title"><%= comment.author.username %></p></strong>
+                 <strong> <p class="card-title"><i class="far fa-user"></i> <%= comment.author.username %></p></strong>
                   <p class="card-text"><%= comment.text %></p>
                   <% if(currentUser && comment.author.id.equals (currentUser._id)|| currentUser && currentUser.isAdmin){ %>
                   <a class="btn btn-sm btn-outline-warning" href="/campgrounds/<%= campground._id %>/comments/<%=comment._id%>/edit">
                       Edit</a>
-                        <form class="deleteForm" action="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                      
+                      
+                    <form class="deleteForm" action="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
                     <button class="btn btn-outline-danger btn-sm" >Delete</button>
                   </form>
                   <% } %>
@@ -56,7 +104,11 @@
               </div>
              </div>
           </div>
+     
      <% }) %>
-</div>
-          
+ </div>
+ 
+
+
+<br>
 <%  include ../partials/footer %>

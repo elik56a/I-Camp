@@ -2,26 +2,42 @@
 
 
       <!--Show all the campgrounds-->
-<div class="container">
+ <div class="container text-center">
+  
      <div class="jumbotron text-center ">
-         <h1 style="">Welcome To Israel Camp</h1>
-         <p> Amazing mountains and ridges throughout the Land of Israel, come and enjoy a deep and breathtaking experience in the Holy Landr join us! </p>
+         <h1 class="display-3" ><strong></i>I-Camp</strong></h1>
+         <p class="lead px-10"> Amazing mountains and ridges throughout the Land of Israel, come and enjoy a deep and breathtaking experience in the Holy Landr join us! </p>
          <a class="btn btn-dark btn-sm" href="/campgrounds/new">Add New Camp!</a>
+         <p><i class="fas fa-campground d-flex justify-content-end  pt-4;" style="font-size:2em;"></i></p>
     </div>
+<!--    <div class="card">-->
+<!--  <h5 class="card-header">I-Camp</h5>-->
+<!--  <div class="card-body">-->
+<!--    <h5 class="card-title">mazing mountains and ridges</h5>-->
+<!--    <p class="card-text"> throughout the Land of Israel, come and enjoy a deep and breathtaking experience in the Holy Landr join us!</p>-->
+<!--   <a class="btn btn-dark btn-sm" href="/campgrounds/new">Add New Camp!</a>-->
+<!--  </div>-->
+<!--</div>-->
+        
 
-   
-   <div class="row text-center">
-          <% campgrounds.forEach(function(campground){ %>
-          <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
-     <div class="card " >
-        <img class="card-img-top" src="<%=campground.img %>">
-         <div class="card-body">
-             <h5 class="card-title"><%= campground.name %></h5>
+ <div class="row">
+    <% campgrounds.forEach(function(campground){ %>
+     <div class="col-lg-4 col-md-6 col-sm-12  mb-4">
+        <div class="card"  >
+            
+          <img id="imgCard" class="card-img-top" src="<%=campground.img %>">
+             <div class="card-body">
+                <h4 class="card-title"><%= campground.name %></h4>
+                <% if(campground.description && campground.description.length > 0) { %>
                  <p class="card-text"><%= campground.description.substring(0, 70) %></p>
-                     <a href="/campgrounds/<%=campground._id%>" class="btn btn-success" style="background:#012660;">More Info</a>
-         </div>
-    </div>
-  </div>
+                    <% } %>
+                      <a href="/campgrounds/<%=campground._id%>" class="btn " style="background:#012660; color:white">More Info</a>
+             </div>
+                      <div class="card-footer">
+                         <small class="text-muted">Last updated <%= moment(campground.createdAt).calendar() %> </small>
+                      </div>
+                 </div>
+             </div>                     
     <% }) %>
 </div>
 

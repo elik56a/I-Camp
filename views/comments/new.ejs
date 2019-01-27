@@ -5,21 +5,21 @@
   
    <div class="row justify-content-center">
         <div class="col-md-12 text-center">
-            <h1 style="margin-top: 100px; padding-bottom:25px;">Ad New Comment To <%= campground.name %></h1>
+            <h2 style="margin-top: 65px; padding-bottom:25px;">Ad New Comment To <%= campground.name %></h1>
         </div>
-     <div class="col-md-6 col-lg-3 col-xs-12">
-      
+     <div class="col-md-6 col-lg-3 col-sm-5 col-10 ">
          <form action="/campgrounds/<%=campground._id%>/comments" method="POST">
                  <div class="form-group">
-                      <textarea cols="42" rows="5" required  name="comment[text]" placeholder="Enter Your Comment Here...  "></textarea> 
+                      <textarea id="textbox" class="form-control " rows="5" type="text"    name="comment[text]" placeholder="Enter Your Comment Here...  " required></textarea>
                  </div> 
+                 
                  <div class="form-group">
-                 <button class="btn btn-primary btn-block">Submit</button>
+                   <button class="btn btn-lg btn-primary btn-block">Submit</button>
                 </div> 
          </form>
           <a href="/campgrounds/<%=campground._id%>">Go Back</a>
     </div>
-   
 </div>
 
- <%  include ../partials/footer %>
+
+<%  include ../partials/footer %>
