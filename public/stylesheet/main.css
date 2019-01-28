@@ -44,3 +44,9 @@ body {
   
   font-size: 25px;
 }
+
+/* Google Maps */
+#map {
+    height: 400px;
+    width: 100%;
+}
