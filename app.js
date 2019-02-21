@@ -1,15 +1,15 @@
 require('dotenv').config();
-var express     = require("express"),
-    app         = express(),
-    mongoose    = require("mongoose"),
-    passport    =require("passport"),
-    LocalStrategy= require("passport-local"),
-    User        = require("./models/user"),
-    flash       = require("connect-flash"),
-    bodyParser  = require("body-parser"),
-    Campground  = require("./models/campground"),
-    methodOverride = require("method-override"),
-    Comment     = require("./models/comments");
+
+const express     = require("express"),
+     app         = express(),
+     mongoose    = require("mongoose"),
+     passport    =require("passport"),
+     LocalStrategy= require("passport-local"),
+     flash       = require("connect-flash"),
+     bodyParser  = require("body-parser"),
+     methodOverride = require("method-override"),
+     User        = require("./models/user");
+
 
 // requring routes    
 var commentsRoutes = require("./routes/comments") ;   
@@ -18,9 +18,6 @@ var indexRoutes = require("./routes/index")
 
 var url =process.env.DATABASEURL || "mongodb://localhost:27017/i_camp"
 mongoose.connect(url, { useNewUrlParser: true })
-
-
-
 
 app.use(bodyParser.urlencoded ({extended: true}));
 app.set("view engine","ejs");
@@ -50,13 +47,10 @@ app.use(function(req,res,next){
     next();
 })
 
-
 app.use(indexRoutes);
 app.use("/campgrounds",campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentsRoutes);
 
-
-
-app.listen(process.env.PORT,process.env.IP, function(){
+app.listen(3000, function(){
     console.log("camp has started!!");
 });
