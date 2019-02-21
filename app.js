@@ -1,4 +1,5 @@
 require('dotenv').config();
+<<<<<<< HEAD
 
 const express     = require("express"),
      app         = express(),
@@ -10,6 +11,19 @@ const express     = require("express"),
      methodOverride = require("method-override"),
      User        = require("./models/user");
 
+=======
+var express     = require("express"),
+    app         = express(),
+    mongoose    = require("mongoose"),
+    passport    =require("passport"),
+    LocalStrategy= require("passport-local"),
+    User        = require("./models/user"),
+    flash       = require("connect-flash"),
+    bodyParser  = require("body-parser"),
+    Campground  = require("./models/campground"),
+    methodOverride = require("method-override"),
+    Comment     = require("./models/comments");
+>>>>>>> 681bfd6866503dd10af96da75018e9631f8f0f2b
 
 // requring routes    
 var commentsRoutes = require("./routes/comments") ;   
