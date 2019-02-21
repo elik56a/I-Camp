@@ -5,11 +5,16 @@
      
         <div class="container">
         <div class="row justify-content-center">
+            <div class="col-md-3">
+                <p class="lead"><%= campground.name %></p>
+                <div id="map"></div>
+              </div>
+              
         <div class="col-md-7">
             <div class="card mb-3">
              <img class="card-img-top " src="<%= campground.img %>">
              <div class="card-body">
-                 <p class="float-right">  $<%=campground.price%>/night</p>
+                 <p class="float-right"> <%=campground.price%>/night</p>
                  <h2 class="card-title"><%= campground.name %></h2> 
                  <p><em>Created by <%= campground.author.username%> , <%= moment(campground.createdAt).fromNow()%>  </em> </p>
                  <p id="description" class="card-text"><%= campground.description %></p>
@@ -124,5 +129,32 @@
 
 <br>
 
-
+<script>
+    function initMap() {
+      var lat = <%= campground.lat %>;
+      var lng = <%= campground.lng %>;
+      var center = {lat: lat, lng: lng };
+      var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: center,
+          scrollwheel: false
+      });
+      var contentString = `
+        <strong><%= campground.name %><br />
+        <%= campground.location %></strong>
+        <p><%= campground.description %></p>
+      `
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+      var marker = new google.maps.Marker({
+          position: center,
+          map: map
+      });
+      marker.addListener('click', function() {
+        infowindow.open(map, marker);
+      });
+    }
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCx2QwtEJcyGyEeeoVClqa1s4s2Ae4g_Hk&callback=initMap"></script>
 <%  include ../partials/footer %>
