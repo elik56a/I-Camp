@@ -5,14 +5,11 @@
      
         <div class="container">
         <div class="row justify-content-center">
-<<<<<<< HEAD
             <div class="col-md-3">
                 <p class="lead"><%= campground.name %></p>
                 <div id="map"></div>
               </div>
               
-=======
->>>>>>> 681bfd6866503dd10af96da75018e9631f8f0f2b
         <div class="col-md-7">
             <div class="card mb-3">
              <img class="card-img-top " src="<%= campground.img %>">
@@ -132,7 +129,6 @@
 
 <br>
 
-<<<<<<< HEAD
 <script>
     function initMap() {
       var lat = <%= campground.lat %>;
@@ -161,7 +157,4 @@
     }
   </script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCx2QwtEJcyGyEeeoVClqa1s4s2Ae4g_Hk&callback=initMap"></script>
-=======
-
->>>>>>> 681bfd6866503dd10af96da75018e9631f8f0f2b
 <%  include ../partials/footer %>
