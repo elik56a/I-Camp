@@ -21,7 +21,7 @@ var campgroundRoutes = require("./routes/campgrounds");
 var indexRoutes = require("./routes/index")    
 
 
-const port = process.env.PORT || 3000;
+const port = process.env.DATABASEURL || 3000;
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/i_camp');
 
 app.use(bodyParser.urlencoded ({extended: true}));
