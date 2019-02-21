@@ -6,10 +6,8 @@ var express     = require("express"),
     LocalStrategy= require("passport-local"),
     User        = require("./models/user"),
     flash       = require("connect-flash"),
-    bodyParser  = require("body-parser"),
-    Campground  = require("./models/campground"),
-    methodOverride = require("method-override"),
-    Comment     = require("./models/comments");
+    bodyParser  = require("body-parser"), 
+    methodOverride = require("method-override");
 
 
 
@@ -21,7 +19,7 @@ var campgroundRoutes = require("./routes/campgrounds");
 var indexRoutes = require("./routes/index")    
 
 
-const port = process.env.DATABASEURL || 3000;
+const port = process.env.PORT || 3000;
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/i_camp');
 
 app.use(bodyParser.urlencoded ({extended: true}));
