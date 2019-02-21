@@ -20,7 +20,7 @@ var indexRoutes = require("./routes/index")
 
 
 const port = process.env.PORT || 3000;
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/i_camp');
+mongoose.connect(process.env.PORT || 'mongodb://localhost:27017/i_camp');
 
 app.use(bodyParser.urlencoded ({extended: true}));
 app.set("view engine","ejs");
